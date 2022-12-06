@@ -8,8 +8,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { CourseService } from './services/course.service';
 import { SearchComponent } from './components/search/search.component';
+import { CourseDetailComponent } from './components/course-detail/course-detail.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
+  {path: 'products/:id', component: CourseDetailComponent},
   {path: 'search/:keyword', component: ListComponent},
   {path: 'department/:id', component:ListComponent},
   {path: 'department', component:ListComponent},
@@ -25,12 +28,14 @@ const routes: Routes = [
     AppComponent,
     ListComponent,
     AddComponent,
-    SearchComponent
+    SearchComponent,
+    CourseDetailComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [CourseService],
   bootstrap: [AppComponent]

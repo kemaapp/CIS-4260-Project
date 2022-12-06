@@ -10,6 +10,11 @@ import { map } from 'rxjs/operators';
 export class CourseService {
   private baseUrl = 'http://localhost:8090/courses';
   constructor(private httpClient: HttpClient) {}
+  getCourse(courseId:number): Observable<Course> {
+    const courseURL = `${this.baseUrl}/${courseId}`;
+    return this.httpClient.get<Course>(courseURL);
+  }
+  /*
   getCourseList(departmentId:number): Observable<Course[]> {
     const searchUrl = `${this.baseUrl}/search/findByDepartmentId?id=${departmentId}`;
 
@@ -17,12 +22,29 @@ export class CourseService {
       map(response => response._embedded.courses)
   );
   }
+  */
+  getCourseListPaginate(
+    thePage: number,
+    thePageSize: number,
+    theDepartmentId: number): Observable<GetResponseCourses> {
+    // http://localhost:8080/api/products/search/findByCategoryId?id=1&page=0&size=10
+        const url = `${this.baseUrl}/search/findByDepartmentId`
+        + `?id=${theDepartmentId}&page=${thePage}&size=${thePageSize}`;
+
+        return this.httpClient.get<GetResponseCourses>(url);
+    }
   searchCourses(theKeyword: string): Observable<Course[]> {
-    const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${theKeyword}`;
-    return this.httpClient.get<GetResponse>(searchUrl).pipe(
+    const searchUrl = `${this.baseUrl}/search/findByNameContaining?title=${theKeyword}`;
+    return this.httpClient.get<GetResponseCourses>(searchUrl).pipe(
           map(response => response._embedded.courses));
    }
   }
-interface GetResponse {
-  _embedded: { courses: Course[];  }
+interface GetResponseCourses {
+  _embedded: { courses: Course[];  },
+  page: {
+        size: number,
+        totalElements: number,
+        totalPages: number,
+        number: number
+  }
 }

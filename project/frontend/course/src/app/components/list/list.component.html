@@ -11,9 +11,42 @@
 
   <tbody>
   <tr *ngFor="let e of courses">
-
-    <td>{{ e.number }}</td>
+    <a routerLink="/courses/{{ e.id }}">
+      <td>{{ e.number }}</td>
+    </a>
     <td>{{e.title}}</td>
   </tr>
   </tbody>
 </table>
+<!-- begin footer -->
+<div class="footer-pagination">
+  <div class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-9" style="padding-left: 30%">
+          <div *ngIf="courses?.length == 0" class="alert alert-warning col-md-12" role="alert">
+            No courses found.
+          </div>
+          <ngb-pagination [(page)]="thePageNumber"
+                          [pageSize]="thePageSize"
+                          [collectionSize]="theTotalElements"
+                          (pageChange)="listCourses()">
+          </ngb-pagination>
+          <div class="col-md-3 mt-2" style="text-align: right;">
+            <span class="mr-2">Page Size</span>
+            <select (change)="updatePageSize($any($event.target).value)">
+              <option>10</option>
+              <option selected="true">15</option>
+              <option>25</option>
+              <option>50</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- end footer -->
