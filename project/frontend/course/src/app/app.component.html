@@ -1,0 +1,30 @@
+<div class="car">
+  <div style="text-align:center;">
+    <h3>CPP Courses</h3>
+
+  </div>
+  <nav style="text-align:center;">
+    <!-- <button routerLink='/list'>List</button> !-->
+    <button routerLink='/add'>Add</button>
+  </nav>
+  <!-- MENU SIDEBAR -->
+  <aside class="menu-sidebar d-none d-lg-block">
+    <div class="menu-sidebar-content js-scrollbar1">
+      <nav class="navbar-sidebar">
+        <ul class="list-unstyled navbar-list">
+          <li>
+            <a routerLink="/department/1" routerLinkActive="active-link">CIS</a>
+          </li>
+          <li>
+            <a routerLink="/department/2" routerLinkActive="active-link">FRL</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+  <!-- END MENU SIDEBAR -->
+  <app-search></app-search>
+  <router-outlet></router-outlet>
+
+
+</div>

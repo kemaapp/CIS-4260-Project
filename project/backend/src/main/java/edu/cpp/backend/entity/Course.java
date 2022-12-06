@@ -7,6 +7,8 @@ import javax.persistence.*;
 @Table(name="course")
 @Data
 public class Course {
+    @ManyToOne
+    @JoinColumn(name = "department_id")
     @JsonIgnore
     private Department department;
 
@@ -16,8 +18,6 @@ public class Course {
     private Long id;
 
     //many courses can belong to one department
-    @ManyToOne(targetEntity = Department.class)
-    @JoinColumn(name = "department_id", nullable = false)
 
     private String number;
     private String title;

@@ -1,0 +1,19 @@
+<div class="text-center">
+  <h3>Course list</h3>
+</div>
+<table class="table table-hover">
+  <thead class="table-dark">
+  <tr>
+    <th>Number</th>
+    <th>Title</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let e of courses">
+
+    <td>{{ e.number }}</td>
+    <td>{{e.title}}</td>
+  </tr>
+  </tbody>
+</table>
