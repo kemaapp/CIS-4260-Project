@@ -12,7 +12,7 @@ import { CourseDetailComponent } from './components/course-detail/course-detail.
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
-  {path: 'products/:id', component: CourseDetailComponent},
+  {path: 'courses/:id', component: CourseDetailComponent},
   {path: 'search/:keyword', component: ListComponent},
   {path: 'department/:id', component:ListComponent},
   {path: 'department', component:ListComponent},

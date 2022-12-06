@@ -14,6 +14,8 @@ import javax.persistence.metamodel.EntityType;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
+@Configuration
 public class MyDataRestConfig implements RepositoryRestConfigurer{
     private EntityManager entityManager;
 
@@ -24,7 +26,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer{
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
 
-        HttpMethod[] theUnsupportedActions = {HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE};
+        /*HttpMethod[] theUnsupportedActions = {HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE};
 
         // disable HTTP methods for Product: PUT, POST and DELETE
         config.getExposureConfiguration()
@@ -38,10 +40,13 @@ public class MyDataRestConfig implements RepositoryRestConfigurer{
                 .withItemExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
                 .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
         // call an internal user-defined helper method
-        exposeIds(config);
+        exposeIds(config); */
+        config.exposeIdsFor(Department.class);
+        config.exposeIdsFor(Course.class);
     }
 
     // expose entity ids
+    /*
     private void exposeIds(RepositoryRestConfiguration config) {
 
         // get a list of all entity classes from the entity manager
@@ -60,5 +65,5 @@ public class MyDataRestConfig implements RepositoryRestConfigurer{
 
         // exposeIdsFor() sets the list of domain types for which we will expose the ID value as a normal property.
         config.exposeIdsFor(domainTypes);
-    }
+    }*/
 }

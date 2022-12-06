@@ -9,6 +9,8 @@ import { map } from 'rxjs/operators';
 })
 export class CourseService {
   private baseUrl = 'http://localhost:8090/courses';
+  private departmentUrl = 'http://localhost:8090/department';
+
   constructor(private httpClient: HttpClient) {}
   getCourse(courseId:number): Observable<Course> {
     const courseURL = `${this.baseUrl}/${courseId}`;
@@ -27,14 +29,13 @@ export class CourseService {
     thePage: number,
     thePageSize: number,
     theDepartmentId: number): Observable<GetResponseCourses> {
-    // http://localhost:8080/api/products/search/findByCategoryId?id=1&page=0&size=10
         const url = `${this.baseUrl}/search/findByDepartmentId`
         + `?id=${theDepartmentId}&page=${thePage}&size=${thePageSize}`;
 
         return this.httpClient.get<GetResponseCourses>(url);
     }
   searchCourses(theKeyword: string): Observable<Course[]> {
-    const searchUrl = `${this.baseUrl}/search/findByNameContaining?title=${theKeyword}`;
+    const searchUrl = `${this.baseUrl}/search/findByTitleContaining?title=${theKeyword}`;
     return this.httpClient.get<GetResponseCourses>(searchUrl).pipe(
           map(response => response._embedded.courses));
    }

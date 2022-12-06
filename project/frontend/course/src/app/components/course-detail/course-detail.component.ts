@@ -25,8 +25,8 @@ export class CourseDetailComponent implements OnInit {
         const currentCourseId: number = +this.route.snapshot.paramMap.get('id')!;
 
   // get product for current product id, getProduct() is defined in product service
-    this.courseService.getCourse(currentCourseId).subscribe(
-        data => { this.course = data; }
+        this.courseService.getCourse(currentCourseId).subscribe(
+            data => { this.course = data; }
     );
    }
 }
