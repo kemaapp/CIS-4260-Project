@@ -77,5 +77,4 @@ export class ListComponent implements OnInit {
           this.thePageNumber = 1;
           this.handleListCourses(); // redisplay courses
     }
-
 }

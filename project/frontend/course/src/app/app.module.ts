@@ -10,6 +10,7 @@ import { CourseService } from './services/course.service';
 import { SearchComponent } from './components/search/search.component';
 import { CourseDetailComponent } from './components/course-detail/course-detail.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CourseStatusComponent } from './components/course-status/course-status.component';
 
 const routes: Routes = [
   {path: 'courses/:id', component: CourseDetailComponent},
@@ -29,7 +30,8 @@ const routes: Routes = [
     ListComponent,
     AddComponent,
     SearchComponent,
-    CourseDetailComponent
+    CourseDetailComponent,
+    CourseStatusComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

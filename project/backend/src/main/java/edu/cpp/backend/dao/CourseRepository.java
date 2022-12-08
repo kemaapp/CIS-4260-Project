@@ -10,6 +10,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 public interface CourseRepository extends JpaRepository<Course, Long> {
     Page<Course> findByDepartmentId(@RequestParam("id") Long id, Pageable pageable);
-    Page<Course> findByTitleContaining(@RequestParam("title") String title, Pageable pageable);
-    Page<Course> findByNumberContaining(@RequestParam("number") Number number, Pageable pageable);
+    Page<Course> findByNumberContaining(@RequestParam("number") String number, Pageable pageable);
 }

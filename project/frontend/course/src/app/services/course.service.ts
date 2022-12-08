@@ -35,7 +35,7 @@ export class CourseService {
         return this.httpClient.get<GetResponseCourses>(url);
     }
   searchCourses(theKeyword: string): Observable<Course[]> {
-    const searchUrl = `${this.baseUrl}/search/findByTitleContaining?title=${theKeyword}`;
+    const searchUrl = `${this.baseUrl}/search/findByNumberContaining?number=${theKeyword}`;
     return this.httpClient.get<GetResponseCourses>(searchUrl).pipe(
           map(response => response._embedded.courses));
    }
